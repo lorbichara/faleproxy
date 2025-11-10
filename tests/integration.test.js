@@ -36,10 +36,15 @@ describe('Integration Tests', () => {
   afterAll(async () => {
     // Kill the test server and clean up
     if (server && server.pid) {
-      process.kill(-server.pid);
+      process.kill(-server.pid, 'SIGTERM');
     }
-    await execAsync('rm app.test.js');
+    try {
+      await execAsync('rm -f app.test.js');
+    } catch (error) {
+      // Ignore cleanup errors
+    }
     nock.cleanAll();
+    nock.restore();
     nock.enableNetConnect();
   });
 
