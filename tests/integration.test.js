@@ -53,7 +53,7 @@ describe('Integration Tests', () => {
     });
     
     const modifiedHtml = $.html();
-    expect(modifiedHtml).toContain('<html><body></body></html>');
+    expect(modifiedHtml).toContain('<html><head></head><body></body></html>');
   });
 
   test('Should handle malformed HTML', () => {
