@@ -57,7 +57,7 @@ describe('Yale to Fale replacement logic', () => {
       </head>
       <body>
         <h1>Hello World</h1>
-        <p>This is a test page with no Yale references.</p>
+        <p>This is a test page with no Y a l e references.</p>
       </body>
       </html>
     `;
@@ -94,7 +94,11 @@ describe('Yale to Fale replacement logic', () => {
       return this.nodeType === 3;
     }).each(function() {
       const text = $(this).text();
-      const newText = text.replace(/Yale/gi, 'Fale');
+      // Handle case-sensitive replacements to preserve case patterns
+      const newText = text
+      .replace(/YALE/g, 'FALE')
+      .replace(/Yale/g, 'Fale')
+      .replace(/yale/g, 'fale');
       if (text !== newText) {
         $(this).replaceWith(newText);
       }
