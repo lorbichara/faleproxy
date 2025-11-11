@@ -8,11 +8,13 @@ on:
 
 jobs:
   test:
+    name: Test on Node ${{ matrix.node-version }}
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [18.x, 20.x]
+      fail-fast: false
 
     steps:
     - uses: actions/checkout@v4
@@ -38,7 +40,7 @@ jobs:
         
   deploy:
     needs: test
-    if: needs.test.result == 'success' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    if: ${{ success() && !contains(needs.*.result, 'failure') && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') }}
     runs-on: ubuntu-latest
     environment: Production
     
