@@ -1,4 +1,4 @@
-# Faleproxy (Lorraine's Version)
+# Faleproxy (Lorraine's Version 2.0)
 
 A Node.js web application that fetches a URL, replaces every instance of "Yale" with "Fale" in the document, and displays the modified content.
 
