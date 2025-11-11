@@ -57,7 +57,7 @@ describe('Yale to Fale replacement logic', () => {
       </head>
       <body>
         <h1>Hello World</h1>
-        <p>This is a test page with no Y a l e references.</p>
+        <p>This is a test page with no Yale references.</p>
       </body>
       </html>
     `;
@@ -80,7 +80,7 @@ describe('Yale to Fale replacement logic', () => {
     // Content should remain the same
     expect(modifiedHtml).toContain('<title>Test Page</title>');
     expect(modifiedHtml).toContain('<h1>Hello World</h1>');
-    expect(modifiedHtml).toContain('<p>This is a test page with no Y a l e references.</p>');
+    expect(modifiedHtml).toContain('<p>This is a test page with no Yale references.</p>');
   });
 
   test('should handle case-insensitive replacements', () => {
@@ -107,5 +107,9 @@ describe('Yale to Fale replacement logic', () => {
     const modifiedHtml = $.html();
     
     expect(modifiedHtml).toContain('FALE University, Fale College, and fale medical school');
+  });
+
+  test('should intentionally fail to test CI/CD', () => {
+    expect(2 + 2).toBe(5);
   });
 });
